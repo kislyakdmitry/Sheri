@@ -1,4 +1,6 @@
-package ru.sheri.beans;
+package com.blog.beans;
+
+import org.hibernate.annotations.Generated;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,14 +10,18 @@ import javax.persistence.Id;
 @Entity
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String text;
-
     private String tag;
 
-    Message(){
+    public Message() {
+    }
+
+    public Message(String text, String tag) {
+        this.text = text;
+        this.tag = tag;
     }
 
     public int getId() {
