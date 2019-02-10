@@ -1,4 +1,4 @@
-package com.blog;
+package com.blog.controller;
 
 import com.blog.beans.Message;
 import com.blog.repo.MessageRepo;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class BlogController {
+public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
