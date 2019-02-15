@@ -51,7 +51,7 @@
                        required>
                 <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
                        required>
-                <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
             <a href="/registration">Register page</a>

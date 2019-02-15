@@ -14,7 +14,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String username;
     private boolean active;
@@ -59,7 +59,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -83,7 +83,7 @@ public class User implements UserDetails {
         this.active = active;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

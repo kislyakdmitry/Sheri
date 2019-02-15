@@ -26,13 +26,13 @@
         <button type="submit">Найти</button>
     </form>
 </div>
-{{#messages}}
+${#messages}
     <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
-        <strong>{{AuthorName}}</strong>
+        <b>${id}</b>
+        <span>${text}</span>
+        <i>${tag}</i>
+        <strong>${AuthorName}</strong>
     </div>
-{{/messages}}
+${/messages}
 </body>
 </html>

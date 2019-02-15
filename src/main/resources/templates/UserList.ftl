@@ -29,6 +29,7 @@
             <th scope="row">{{id}}</th>
             <td>{{username}}</td>
             <td>{{roles}}</td>
+            <a href="/user/{{id}}">Edit</a>
         </tr>
     {{/users}}
     </tbody>
