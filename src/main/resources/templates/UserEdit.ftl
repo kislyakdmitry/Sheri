@@ -15,16 +15,27 @@
     <title>Blog</title>
 </head>
 
-<body class="text-center">
-<form>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-    {{#roles}}
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="{{Authority}}" name="{{Authority}}">
-            <label class="custom-control-label" for="{{Authority}}">{{Authority}}</label>
+<body>
+<form class="ml-3 mt-3">
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <div class="form-group row">
+        <label for="Username" class="col-sm-1 col-form-label">Username</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="Username" value="${user.username}">
         </div>
-    {{/roles}}
-
+    </div>
+    <#list roles as role>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="${role.authority}"
+                name="${role.authority}" ${user.role?seq_contains(role)?string("checked","")}>
+            <label class="custom-control-label" for="${role.authority}">${role.authority}</label>
+        </div>
+    </#list>
+    <div class="form-group row mt-3">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
 </form>
 </body>
 </html>

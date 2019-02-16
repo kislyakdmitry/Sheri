@@ -10,29 +10,29 @@
 </head>
 <body>
 <form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="hidden" name="_csrf" value="${_csrf.token}" />
     <input type="submit" value="Sign Out"/>
 </form>
 <div>
     <form method="post">
         <input type="text" name="text" placeholder="Введите текст"/>
         <input type="text" name="tag" placeholder="Введите тег"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit">Добавить</button>
     </form>
     <form method="post" action="filter">
         <input type="text" name="filter" placeholder="Поиск"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit">Найти</button>
     </form>
 </div>
-${#messages}
+<#list messages as message>
     <div>
-        <b>${id}</b>
-        <span>${text}</span>
-        <i>${tag}</i>
-        <strong>${AuthorName}</strong>
+        <b>${message.id}</b>
+        <span>${message.text}</span>
+        <i>${message.tag}</i>
+        <strong>${message.authorName}</strong>
     </div>
-${/messages}
+</#list>
 </body>
 </html>

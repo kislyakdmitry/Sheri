@@ -24,14 +24,14 @@
     </tr>
     </thead>
     <tbody>
-    {{#users}}
+    <#list users as user>
         <tr>
-            <th scope="row">{{id}}</th>
-            <td>{{username}}</td>
-            <td>{{roles}}</td>
-            <a href="/user/{{id}}">Edit</a>
+            <th scope="row">${user.id}</th>
+            <td>${user.username}/td>
+            <td>${user.roles}</td>
+            <a href="/user/${user.id}">Edit</a>
         </tr>
-    {{/users}}
+    </#list>
     </tbody>
 </table>
 </body>
