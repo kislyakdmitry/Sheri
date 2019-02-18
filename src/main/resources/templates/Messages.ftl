@@ -20,9 +20,8 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit">Добавить</button>
     </form>
-    <form method="post" action="filter">
-        <input type="text" name="filter" placeholder="Поиск"/>
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+    <form method="get" action="/">
+        <input type="text" name="filter" placeholder="Поиск" value="${filter}"/>
         <button type="submit">Найти</button>
     </form>
 </div>
