@@ -4,6 +4,7 @@ import com.blog.beans.Message;
 import com.blog.beans.User;
 import com.blog.repo.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,7 @@ public class MessagesController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('USER')")
     public String add(@RequestParam String text, @RequestParam String tag, @AuthenticationPrincipal User user, Model model) {
         Message message = new Message(text, tag, user);
         messageRepo.save(message);

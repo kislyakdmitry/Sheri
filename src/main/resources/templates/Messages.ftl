@@ -21,7 +21,7 @@
         <button type="submit">Добавить</button>
     </form>
     <form method="get" action="/">
-        <input type="text" name="filter" placeholder="Поиск" value="${filter}"/>
+        <input type="text" name="filter" placeholder="Поиск" value="${filter?if_exists}"/>
         <button type="submit">Найти</button>
     </form>
 </div>
