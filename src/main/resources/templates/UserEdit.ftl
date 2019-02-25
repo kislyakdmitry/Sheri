@@ -16,12 +16,11 @@
 </head>
 
 <body>
-<form class="ml-3 mt-3">
-    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+<form class="ml-3 mt-3" method="post" action="/user">
     <div class="form-group row">
         <label for="Username" class="col-sm-1 col-form-label">Username</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="Username" value="${user.username}">
+            <input type="text" class="form-control" id="Username" name="Username" value="${user.username}">
         </div>
     </div>
     <#list roles as role>
@@ -31,6 +30,10 @@
             <label class="custom-control-label" for="${role.authority}">${role.authority}</label>
         </div>
     </#list>
+
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="hidden" name="userId" value="${user.id}"/>
+
     <div class="form-group row mt-3">
         <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Save</button>

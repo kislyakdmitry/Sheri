@@ -3,11 +3,11 @@ package com.blog.controller;
 import com.blog.beans.Role;
 import com.blog.beans.User;
 import com.blog.repo.UserRepo;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserListController {
     private final UserRepo userRepo;
 
@@ -40,6 +41,24 @@ public class UserListController {
 
         model.addAttribute("roles",roles);
         return "UserEdit";
+    }
+
+    @PostMapping
+    public String saveUser(
+            @RequestParam("userId") User user,
+            @RequestParam Map<String,String> form,
+            @RequestParam String Username
+    ){
+        user.setUsername(Username);
+        user.getRole().clear();
+        Set<String> roles = Arrays.stream(Role.values()).map(Role::name).collect(Collectors.toSet());
+        for (String key : form.keySet()) {
+            if (roles.contains(key)){
+                user.getRole().add(Role.valueOf(key));
+            }
+        }
+        userRepo.save(user);
+        return "redirect:/user";
     }
 
 }

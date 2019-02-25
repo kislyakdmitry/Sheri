@@ -21,15 +21,16 @@
     <tr>
         <th scope="col">id</th>
         <th scope="col">Username</th>
+        <th scope="col">Roles</th>
     </tr>
     </thead>
     <tbody>
     <#list users as user>
         <tr>
             <th scope="row">${user.id}</th>
-            <td>${user.username}/td>
+            <td>${user.username}</td>
             <td>${user.roles}</td>
-            <a href="/user/${user.id}">Edit</a>
+            <td><a href="/user/${user.id}">Edit</a></td>
         </tr>
     </#list>
     </tbody>
